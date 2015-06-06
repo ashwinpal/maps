@@ -109,7 +109,8 @@ function initialize() {
 var loc = {
   Point1  :{lat:43.7304836,lng:-79.6015318},
   Point2  :{lat:43.7342388,lng:-79.6031137},
-  Point3  :{lat:43.7321998,lng:-79.6090827}
+  Point3  :{lat:43.7321998,lng:-79.6090827},
+  Point4  :{lat:43.7307109,lng:-79.6069193}
 };
 
 $.each(loc, function( index, value ) {
@@ -135,7 +136,7 @@ function createLoc(place,latlong){
     var str=(marker.position).toString();
     //alert(typeof(str));
     str=str.substring(1,(str.length-1));
-    $('#end').val(str);
+    $('#end').val(str); 
   });
 
 }
@@ -249,6 +250,9 @@ directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
 	startAnimation();
     }                                                    
  });
+
+$('#start').val($('#end').val());
+
 }
   
 
@@ -324,7 +328,7 @@ function startAnimation() {
 
 <div id="tools">
 	Current Location:
-	<input name="start" id="start" value="humber college"/><br><br>
+	<input name="start" id="start" value="43.7307109,-79.6069193"/><br><br>
 	Destination:
 	<input name="end" id="end" value=""/>
 	<input type="submit" onclick="calcRoute();" value="Travel" />
