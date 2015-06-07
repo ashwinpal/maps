@@ -15,6 +15,9 @@ body{height:100%;margin:0px;font-family: Helvetica,Arial;}
 <script type ="text/javascript" src="scripts/v3_epoly.js"></script>
 <script type="text/javascript">
   
+
+
+
   var map;
   var directionDisplay;
   var directionsService;
@@ -119,56 +122,29 @@ $.each(loc, function( index, value ) {
 
 function createLoc(place,latlong){
   
-  var pos = new google.maps.LatLng(latlong.lat,latlong.lng);
+    var pos = new google.maps.LatLng(latlong.lat,latlong.lng);
 
-  //alert(place+ " "+ position);
+      //alert(place+ " "+ position);
 
-     var marker = new google.maps.Marker({
-          position: pos,
-          map: map,
-          icon: pinSymbol("#65C7F0"),
-          title: place
-      }); 
-
-
-     google.maps.event.addListener(marker, 'click', function() {
-    //alert(marker.title +" " + marker.position);
-    var str=(marker.position).toString();
-    //alert(typeof(str));
-    str=str.substring(1,(str.length-1));
-    $('#end').val(str); 
-  });
-
-}
-
-//     var marker = new google.maps.Marker({
-//           position: new google.maps.LatLng(43.7304836,-79.6015318),
-//           map: map,
-//           icon: pinSymbol("#65C7F0"),
-//           title: 'Point 1'
-//       });
-
-//   var marker = new google.maps.Marker({
-//         position: new google.maps.LatLng(43.7342388,-79.6031137),
-//         map: map,
-//         icon: pinSymbol("#65C7F0"),
-//         title: 'Point 2'
-//     });
-
-// var marker = new google.maps.Marker({
-//       position: new google.maps.LatLng(43.7321998,-79.6090827),
-//       map: map,
-//       icon: pinSymbol("#65C7F0"),
-//       title: 'Point 3'
-//   });
+         var marker = new google.maps.Marker({
+              position: pos,
+              map: map,
+              icon: pinSymbol("#65C7F0"),
+              title: place
+          }); 
 
 
+         google.maps.event.addListener(marker, 'click', function() {
+        //alert(marker.title +" " + marker.position);
+        var str=(marker.position).toString();
+        //alert(typeof(str));
+        str=str.substring(1,(str.length-1));
+        $('#end').val(str);
+      });
 
-// google.maps.event.addListener(marker, 'click', function() {
-//     alert(marker.position);
-//   });
+  } // ----- end of createloc ------ //
 
-}
+} // ----- end of intialize ------ //
 
   
   
@@ -176,30 +152,31 @@ function createLoc(place,latlong){
 
 	function calcRoute(){
 
-if (timerHandle) { clearTimeout(timerHandle); }
-if (marker) { marker.setMap(null);}
-polyline.setMap(null);
-poly2.setMap(null);
-directionsDisplay.setMap(null);
-    polyline = new google.maps.Polyline({
-	path: [],
-	strokeColor: '#FF0000',
-	strokeWeight: 10
-    });
-    poly2 = new google.maps.Polyline({
-	path: [],
-	strokeColor: '#FF0000',
-	strokeWeight: 10
-    });
-    // Create a renderer for directions and bind it to the map.
-    var rendererOptions = {
-      map: map
+        if (timerHandle) { clearTimeout(timerHandle); }
+        if (marker) { marker.setMap(null);}
+        polyline.setMap(null);
+        poly2.setMap(null);
+        directionsDisplay.setMap(null);
+            polyline = new google.maps.Polyline({
+        	path: [],
+        	strokeColor: '#FF0000',
+        	strokeWeight: 10
+            });
+            poly2 = new google.maps.Polyline({
+        	path: [],
+        	strokeColor: '#FF0000',
+        	strokeWeight: 10
+            });
+            // Create a renderer for directions and bind it to the map.
+            var rendererOptions = {
+              map: map
     }
-directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
+
+  directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
 
 	    var start = document.getElementById("start").value; 
 	    var end = document.getElementById("end").value;
-		var travelMode = google.maps.DirectionsTravelMode.DRIVING
+		  var travelMode = google.maps.DirectionsTravelMode.WALKING
 
 	    var request = {
 	        origin: start,
@@ -237,8 +214,6 @@ directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
               polyline.getPath().push(nextSegment[k]);
               bounds.extend(nextSegment[k]);
 
-
-
             }
           }
         }
@@ -246,14 +221,15 @@ directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
         polyline.setMap(map);
         map.fitBounds(bounds);
 //        createMarker(endLocation.latlng,"end",endLocation.address,"red");
-	map.setZoom(10);
+	map.setZoom(15);
 	startAnimation();
     }                                                    
  });
 
 $('#start').val($('#end').val());
 
-}
+
+}  // ----- end of calcRoute ------ //
   
 
   
@@ -315,6 +291,18 @@ function startAnimation() {
 
 //=============== ~animation funcitons =====================
 
+$(function(){
+
+$("#submit").click(function(){
+calcRoute();
+setTimeout("initialize()",10000);
+
+});
+
+
+});
+
+
 
 </script>
 </head>
@@ -331,7 +319,7 @@ function startAnimation() {
 	<input name="start" id="start" value="43.7307109,-79.6069193"/><br><br>
 	Destination:
 	<input name="end" id="end" value=""/>
-	<input type="submit" onclick="calcRoute();" value="Travel" />
+	<input type="submit" id="submit" value="Travel" />
 </div>
 
 <div id="map_canvas" style="width:100%;height:100%;"></div>
