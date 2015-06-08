@@ -295,24 +295,16 @@ $(function(){
 
 $("#submit").click(function(){
 calcRoute();
-setTimeout("initialize()",10000);
+setTimeout("initialize()",5000);
 
 });
 
 
 });
-
-
 
 </script>
 </head>
-<body>
-
-<div>
-  <h1>Start Game</h1>
-  <button onclick="initialize()">Start</button><br>
-</div>
-
+<body onload="initialize()">
 
 <div id="tools">
 	Current Location:
