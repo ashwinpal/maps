@@ -1,5 +1,13 @@
 <?php
   session_start();
+
+  if (isset($_POST['submit'])) {
+    # code...
+    
+    
+    $_SESSION ['username'] = $_POST['uname'];
+    $_SESSION ['side'] = $_POST['side'];
+  }
 ?>
 
 <!DOCTYPE html>
@@ -232,7 +240,6 @@ function createLoc(place,latlong){
 
 $('#start').val($('#end').val());
 
-
 }  // ----- end of calcRoute ------ //
   
 
@@ -300,7 +307,7 @@ $(function(){
 $("#submit").click(function(){
 calcRoute();
 setTimeout("initialize()",5000);
-
+$('#end').val(" ");
 });
 
 
@@ -313,8 +320,8 @@ setTimeout("initialize()",5000);
 <body onload="initialize()">
 
 <div id="tools">
-  <h2> <?php echo $_SESSION['username']; ?> </h2>
-  <h4> <?php echo $_SESSION['side']; ?> </h4>
+  <h2> <?=$_SESSION['username']?> </h2>
+  <h4> <?=$_SESSION['side']?> </h4>
 	<h2>Current Location:</h2>
 	<input type="text" name="start" id="start" value="43.7307109,-79.6069193" disabled/><br><br>
 	<h2>Destination:</h2>

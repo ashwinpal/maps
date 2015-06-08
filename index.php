@@ -1,13 +1,5 @@
 <?php
-
-	if (isset($_POST['submit'])) {
-		# code...
-		session_start();
-		
-		$_SESSION ['username'] = $_POST['uname'];
-	 	$_SESSION ['side'] = $_POST['side'];
-	}
-
+	session_start();
 ?>
 
 <!DOCTYPE html>
@@ -24,9 +16,9 @@
 				<input type="text" name="uname" id="name" placeholder="Your name" />
 				<h2>Select Your Side</h2>
 
-		    <input type="radio" id="radio1" name="side" value="all" checked>
+		    <input type="radio" id="radio1" name="side" value="POLICE" checked>
 		       <label for="radio1">POLICE</label>
-		    <input type="radio" id="radio2" name="side"value="false">
+		    <input type="radio" id="radio2" name="side"value="THEIF">
 		       <label for="radio2">THEIF</label>
 
 		    <input type="submit" name="submit" />
