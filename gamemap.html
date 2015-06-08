@@ -303,18 +303,20 @@ setTimeout("initialize()",5000);
 });
 
 </script>
+
+<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body onload="initialize()">
 
 <div id="tools">
-	Current Location:
-	<input name="start" id="start" value="43.7307109,-79.6069193"/><br><br>
-	Destination:
-	<input name="end" id="end" value=""/>
+	<h2>Current Location:</h2>
+	<input type="text" name="start" id="start" value="43.7307109,-79.6069193" disabled/><br><br>
+	<h2>Destination:</h2>
+	<input type="text" name="end" id="end" value="" disabled/>
 	<input type="submit" id="submit" value="Travel" />
 </div>
 
-<div id="map_canvas" style="width:100%;height:100%;"></div>
+<div id="map_canvas" style="float:right; width:80%; height:100%;"></div>
 
 </body>
 </html>
