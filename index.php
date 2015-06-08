@@ -3,9 +3,9 @@
 	if (isset($_POST['submit'])) {
 		# code...
 		session_start();
-
+		
 		$_SESSION ['username'] = $_POST['uname'];
-		// $_SESSION ['side'] = $_POST['side'];
+	 	$_SESSION ['side'] = $_POST['side'];
 	}
 
 ?>

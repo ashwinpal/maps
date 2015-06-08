@@ -314,6 +314,7 @@ setTimeout("initialize()",5000);
 
 <div id="tools">
   <h2> <?php echo $_SESSION['username']; ?> </h2>
+  <h4> <?php echo $_SESSION['side']; ?> </h4>
 	<h2>Current Location:</h2>
 	<input type="text" name="start" id="start" value="43.7307109,-79.6069193" disabled/><br><br>
 	<h2>Destination:</h2>
