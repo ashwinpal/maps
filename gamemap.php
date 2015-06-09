@@ -125,7 +125,14 @@ var loc = {
   Point1  :{lat:43.7304836,lng:-79.6015318},
   Point2  :{lat:43.7342388,lng:-79.6031137},
   Point3  :{lat:43.7321998,lng:-79.6090827},
-  Point4  :{lat:43.7307109,lng:-79.6069193}
+  Point4  :{lat:43.7307109,lng:-79.6069193},
+  Point5  :{lat:43.726226,lng:-79.622325},
+  Point6  :{lat:43.739808,lng:-79.580397},
+  Point7  :{lat:43.742134,lng:-79.594387},
+  Point8  :{lat:43.741359,lng:-79.613613},
+  Point9  :{lat:43.731374,lng:-79.589795},
+  Point10  :{lat:43.721729,lng:-79.613012},
+  Point11  :{lat:43.726536,lng:-79.593872}
 };
 
 $.each(loc, function( index, value ) {
@@ -306,7 +313,7 @@ $(function(){
 
 $("#submit").click(function(){
 calcRoute();
-setTimeout("initialize()",5000);
+setTimeout("initialize()",8000);
 $('#end').val(" ");
 });
 
